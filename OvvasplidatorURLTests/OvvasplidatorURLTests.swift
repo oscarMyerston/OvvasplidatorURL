@@ -10,27 +10,111 @@ import XCTest
 
 final class OvvasplidatorURLTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func testValidURL() {
+        let validator = URLValidator()
+        XCTAssertTrue(validator.validate(urlString: "https://example.com"))
+        XCTAssertTrue(validator.validate(urlString: "https://trusted.com/resource"))
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    func testInvalidScheme() {
+        let validator = URLValidator()
+        XCTAssertFalse(validator.validate(urlString: "http://example.com"))
+        XCTAssertFalse(validator.validate(urlString: "ftp://example.com"))
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    func testInvalidDomain() {
+        let validator = URLValidator()
+        XCTAssertFalse(validator.validate(urlString: "https://evil.com"))
     }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testMaxLengthExceeded() {
+        let validator = URLValidator()
+
+        let longURL = "https://" + String(repeating: "a", count: validator.getMaxURLLength() + 1)
+        debugPrint(" --- longURL: \(longURL)")
+        XCTAssertFalse(validator.validate(urlString: longURL))
+    }
+
+    func testDangerousCharacters() {
+        let validator = URLValidator()
+
+        XCTAssertFalse(validator.validate(urlString: "https://example.com/<script>alert('XSS')</script>"))
+    }
+
+    func testContainsEscapeSequences() {
+        let validator = URLValidator()
+        
+        XCTAssertFalse(validator.validate(urlString: "https://example.com/%27"))
+    }
+
+    func testReservedPaths() {
+        let validator = URLValidator()
+
+        XCTAssertFalse(validator.validate(urlString: "https://example.com/admin"))
+        XCTAssertFalse(validator.validate(urlString: "https://example.com/config"))
+        XCTAssertFalse(validator.validate(urlString: "https://example.com/setup"))
+    }
+
+    func testOpenRedirect() {
+        let validator = URLValidator()
+
+        XCTAssertFalse(validator.validate(urlString: "https://example.com/resource?redirect_uri=http://malicious-site.com"))
+    }
+
+    func testInvalidQueryParameters() {
+        let validator = URLValidator()
+
+        XCTAssertFalse(validator.validate(urlString: "https://example.com/resource?param1=value1&invalid_param=value2"))
+    }
+
+    func testLocalAddress() {
+        let validator = URLValidator()
+
+        XCTAssertFalse(validator.validate(urlString: "https://localhost"))
+        XCTAssertFalse(validator.validate(urlString: "https://127.0.0.1"))
+        XCTAssertFalse(validator.validate(urlString: "https://[::1]"))
+    }
+
+    func testInvalidPort() {
+        let validator = URLValidator()
+
+        XCTAssertFalse(validator.validate(urlString: "https://example.com:8080"))
+    }
+
+    func testFragment() {
+        let validator = URLValidator()
+
+        XCTAssertFalse(validator.validate(urlString: "https://example.com#fragment"))
     }
 
 }
+
+
+/**
+ Explicación de los Tests
+ testValidURL: Verifica que las URLs con esquema https y dominios permitidos (example.com, trusted.com) sean válidas.
+
+ testInvalidScheme: Comprueba que las URLs con esquemas no permitidos (http, ftp) sean inválidas.
+
+ testInvalidDomain: Asegura que las URLs con dominios no permitidos (evil.com) sean inválidas.
+
+ testMaxLengthExceeded: Valida que las URLs con una longitud superior al máximo (2048) sean inválidas.
+
+ testDangerousCharacters: Detecta URLs que contienen caracteres peligrosos (<>{}"\\^``|) y las marca como inválidas.
+
+ testContainsEscapeSequences: Rechaza URLs que contienen secuencias de escape (%27).
+
+ testReservedPaths: Verifica que las URLs que incluyen rutas reservadas (/admin, /config, /setup) sean inválidas.
+
+ testOpenRedirect: Detecta URLs que contienen parámetros de consulta que podrían ser usados para redirecciones abiertas y las marca como inválidas.
+
+ testInvalidQueryParameters: Rechaza URLs que contienen parámetros de consulta no permitidos (invalid_param).
+
+ testLocalAddress: Asegura que las URLs que apuntan a direcciones locales (localhost, 127.0.0.1, ::1) sean inválidas.
+
+ testInvalidPort: Verifica que las URLs que especifican puertos no permitidos (8080) sean inválidas.
+
+ testFragment: Rechaza URLs que contienen fragmentos (#fragment).
+
+
+ */

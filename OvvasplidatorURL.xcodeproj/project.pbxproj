@@ -16,6 +16,8 @@
 		48ACCC692C1BE82800D93466 /* OvvasplidatorURLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ACCC682C1BE82800D93466 /* OvvasplidatorURLTests.swift */; };
 		48ACCC732C1BE82800D93466 /* OvvasplidatorURLUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ACCC722C1BE82800D93466 /* OvvasplidatorURLUITests.swift */; };
 		48ACCC752C1BE82800D93466 /* OvvasplidatorURLUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ACCC742C1BE82800D93466 /* OvvasplidatorURLUITestsLaunchTests.swift */; };
+		48ACCC822C1BE9EB00D93466 /* URLValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ACCC812C1BE9EB00D93466 /* URLValidator.swift */; };
+		48ACCC842C1BF52800D93466 /* ContainsOpenRedirectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ACCC832C1BF52800D93466 /* ContainsOpenRedirectTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		48ACCC6E2C1BE82800D93466 /* OvvasplidatorURLUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OvvasplidatorURLUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		48ACCC722C1BE82800D93466 /* OvvasplidatorURLUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvvasplidatorURLUITests.swift; sourceTree = "<group>"; };
 		48ACCC742C1BE82800D93466 /* OvvasplidatorURLUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvvasplidatorURLUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		48ACCC812C1BE9EB00D93466 /* URLValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLValidator.swift; sourceTree = "<group>"; };
+		48ACCC832C1BF52800D93466 /* ContainsOpenRedirectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainsOpenRedirectTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,7 @@
 				48ACCC512C1BE82500D93466 /* AppDelegate.swift */,
 				48ACCC532C1BE82500D93466 /* SceneDelegate.swift */,
 				48ACCC552C1BE82500D93466 /* ViewController.swift */,
+				48ACCC812C1BE9EB00D93466 /* URLValidator.swift */,
 				48ACCC572C1BE82500D93466 /* Main.storyboard */,
 				48ACCC5A2C1BE82800D93466 /* Assets.xcassets */,
 				48ACCC5C2C1BE82800D93466 /* LaunchScreen.storyboard */,
@@ -114,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				48ACCC682C1BE82800D93466 /* OvvasplidatorURLTests.swift */,
+				48ACCC832C1BF52800D93466 /* ContainsOpenRedirectTests.swift */,
 			);
 			path = OvvasplidatorURLTests;
 			sourceTree = "<group>";
@@ -260,6 +266,7 @@
 			files = (
 				48ACCC562C1BE82500D93466 /* ViewController.swift in Sources */,
 				48ACCC522C1BE82500D93466 /* AppDelegate.swift in Sources */,
+				48ACCC822C1BE9EB00D93466 /* URLValidator.swift in Sources */,
 				48ACCC542C1BE82500D93466 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,6 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48ACCC842C1BF52800D93466 /* ContainsOpenRedirectTests.swift in Sources */,
 				48ACCC692C1BE82800D93466 /* OvvasplidatorURLTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
