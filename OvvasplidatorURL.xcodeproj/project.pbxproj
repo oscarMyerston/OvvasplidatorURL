@@ -18,6 +18,7 @@
 		48ACCC752C1BE82800D93466 /* OvvasplidatorURLUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ACCC742C1BE82800D93466 /* OvvasplidatorURLUITestsLaunchTests.swift */; };
 		48ACCC822C1BE9EB00D93466 /* URLValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ACCC812C1BE9EB00D93466 /* URLValidator.swift */; };
 		48ACCC842C1BF52800D93466 /* ContainsOpenRedirectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ACCC832C1BF52800D93466 /* ContainsOpenRedirectTests.swift */; };
+		48ACCC862C1C01E600D93466 /* URLValidatorPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ACCC852C1C01E600D93466 /* URLValidatorPerformanceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		48ACCC742C1BE82800D93466 /* OvvasplidatorURLUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvvasplidatorURLUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		48ACCC812C1BE9EB00D93466 /* URLValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLValidator.swift; sourceTree = "<group>"; };
 		48ACCC832C1BF52800D93466 /* ContainsOpenRedirectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainsOpenRedirectTests.swift; sourceTree = "<group>"; };
+		48ACCC852C1C01E600D93466 /* URLValidatorPerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLValidatorPerformanceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 			children = (
 				48ACCC682C1BE82800D93466 /* OvvasplidatorURLTests.swift */,
 				48ACCC832C1BF52800D93466 /* ContainsOpenRedirectTests.swift */,
+				48ACCC852C1C01E600D93466 /* URLValidatorPerformanceTests.swift */,
 			);
 			path = OvvasplidatorURLTests;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 			files = (
 				48ACCC842C1BF52800D93466 /* ContainsOpenRedirectTests.swift in Sources */,
 				48ACCC692C1BE82800D93466 /* OvvasplidatorURLTests.swift in Sources */,
+				48ACCC862C1C01E600D93466 /* URLValidatorPerformanceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

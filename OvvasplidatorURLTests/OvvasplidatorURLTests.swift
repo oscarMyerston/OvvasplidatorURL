@@ -87,6 +87,34 @@ final class OvvasplidatorURLTests: XCTestCase {
         XCTAssertFalse(validator.validate(urlString: "https://example.com#fragment"))
     }
 
+    func testURLValidatorDoesNotLeak() {
+        // Creamos un expectation para esperar a que se libere el objeto
+        let expectation = self.expectation(description: "URLValidator deallocated")
+
+        // Creamos una débil referencia para verificar si se libera correctamente
+        var validator: URLValidator? = URLValidator()
+        weak var weakValidator = validator
+
+        // Ejecutamos un ciclo de autoreleasepool para forzar la liberación de la instancia
+        autoreleasepool {
+            // Ejecutamos alguna lógica con el validator si es necesario
+            XCTAssertNotNil(validator)
+
+            // Liberamos la referencia al validator
+            validator = nil
+        }
+
+        // Esperamos un poco para que el autoreleasepool haga efecto
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            // Comprobamos que la referencia débil sea nil, lo que indica que el objeto fue liberado correctamente
+            XCTAssertNil(weakValidator)
+            expectation.fulfill()
+        }
+
+        // Esperamos la expectativa
+        waitForExpectations(timeout: 1.0, handler: nil)
+    }
+
 }
 
 

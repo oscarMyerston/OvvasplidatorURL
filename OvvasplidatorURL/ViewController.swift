@@ -17,9 +17,11 @@ class ViewController: UIViewController {
         setupUI()
 
         // Ejemplo de validación de URL
-       // let urlString = "https://example.com/resource?param1=value1"
+        // let urlString = "https://example.com/resource?param1=value1"
         //let urlString = "https://localhost"
-        let urlString = "https://example.com/<script>alert('XSS')</script>"
+        // let urlString = "https://example.com/<script>alert('XSS')</script>"
+
+        let urlString = "http://example.com/script.js"
 
         validateAndDisplayResult(for: urlString)
     }
@@ -31,7 +33,7 @@ class ViewController: UIViewController {
         validationLabel.textAlignment = .center
         validationLabel.font = UIFont.systemFont(ofSize: 20)
         view.addSubview(validationLabel)
-
+        
         // Configurar restricciones
         NSLayoutConstraint.activate([
             validationLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
